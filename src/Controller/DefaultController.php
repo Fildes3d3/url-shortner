@@ -32,6 +32,7 @@ class DefaultController extends AbstractController
         $url = $this->getDoctrine()->getRepository(Url::class)->findOneBy(['shortUrl' => $shortUrl]);
 
         $response = new RedirectResponse($url->getLongUrl());
+        //not used atm maybe useful tot treat the case the url does not exist
         $response->headers->set(self::URL_REDIRECT, $url->getId());
 
         return $response;
